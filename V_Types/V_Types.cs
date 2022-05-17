@@ -25,7 +25,7 @@ namespace V_Types
 
             decimal MidT = MidTempCalc(maxtemp, mintemp);
             Console.WriteLine($"Средняя темпаратура: {MidT}");
-            Console.ReadKey("Press any key to continue");
+            Console.ReadKey();
           
         }  
 
@@ -78,7 +78,7 @@ namespace V_Types
             }
 
            Console.WriteLine(M_title);
-           Console.ReadKey("Press any key to continue");
+           Console.ReadKey();
         }
 
 
@@ -99,7 +99,17 @@ namespace V_Types
             {
                 Console.WriteLine($"Число {number} нечетное.");
             }
-            Console.ReadKey("Press any key to continue");
+            Console.ReadKey();
+        }
+
+
+        /// <summary>
+        /// Задача 4 
+        /// Схематичное изображение чека, где динамические переменныеные(цена, дата, и т.д.) заранее предопредены.
+        /// </summary>
+        static void Task04()
+        {
+
         }
 
        /// <summary>
@@ -154,9 +164,18 @@ namespace V_Types
                     Console.WriteLine("========================");
                     Console.WriteLine("Задача 3");
                     Console.WriteLine("========================");
-                    Task02();
+                    Task03();
                     Console.WriteLine("========================");
                     break;
+
+                case 4:
+                    Console.WriteLine("========================");
+                    Console.WriteLine("Задача 3");
+                    Console.WriteLine("========================");
+                    Task04();
+                    Console.WriteLine("========================");
+                    break;
+
 
             }
                                             
