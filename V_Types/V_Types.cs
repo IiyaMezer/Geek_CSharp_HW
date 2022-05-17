@@ -4,25 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace V_Types
 {
     internal class V_Types
     {
-        static void Main (string[] args)
+        
+        /// <summary>
+        ///  Запрос крайних значений темпратуры и вывод среднего значения.
+        /// </summary>
+        static void Task01()
         {
-            Console.Write("Введите максмальную погоду:");
-            decimal maxtemp = Convert.ToDecimal(Console.ReadLine());
+           
+
+             Console.Write("Введите максмальную погоду:");
+            decimal maxtemp = decimal.Parse(Console.ReadLine());
 
             Console.Write("Введите минимальную погоду:");
-            decimal mintemp = Convert.ToDecimal(Console.ReadLine());
+            decimal mintemp = decimal.Parse(Console.ReadLine());
 
-            decimal midtemp = (maxtemp + mintemp) / 2;
+            decimal MidT = MidTempCalc(maxtemp, mintemp);
+            Console.WriteLine($"Средняя темпаратура: {MidT}");
+            Console.ReadKey("Press any key to continue");
+          
+        }  
 
 
-            Console.WriteLine($"Средняя температура: {midtemp} ");
-
-            Console.Write("Введите номер месяца:");
-            int month = Convert.ToInt32(Console.ReadLine());
+        /// <summary>
+        /// Звпрос номера месяца и вывод его названия.
+        /// </summary>
+        static void Task02()
+        {
+             Console.Write("Введите номер месяца:");
+            int month = int.Parse(Console.ReadLine());
             string M_title = "";
             switch (month)
             {
@@ -64,10 +78,88 @@ namespace V_Types
             }
 
            Console.WriteLine(M_title);
+           Console.ReadKey("Press any key to continue");
+        }
 
-           Console.WriteLine("Press ENTER to finish programm");
-           Console.ReadLine();
-            
+
+        /// <summary>
+        /// Задача 3
+        /// Запрос числа и проверка на четность
+        /// </summary>
+        static void Task03()
+        {
+            Console.WriteLine("Введите число: ");
+            double number = double.Parse(Console.ReadLine());
+
+            if (number % 2 == 0)
+            {
+                Console.WriteLine($"Число {number} четное.");
+            }
+            else
+            {
+                Console.WriteLine($"Число {number} нечетное.");
+            }
+            Console.ReadKey("Press any key to continue");
+        }
+
+       /// <summary>
+       ///Вычисление среднего значения.
+       /// </summary>
+       /// <param name="maxtemp">Максимальная метпература</param>
+       /// <param name="mintemp">Минимальная темпертура</param>
+       /// <returns>Среднее значение</returns>
+       static decimal MidTempCalc(decimal maxtemp, decimal mintemp)
+        {
+            return (maxtemp + mintemp) / 2;
+        }
+
+        static void Main (string[] args)
+        {
+
+            Console.WriteLine("Выдберите задачу:");
+            Console.WriteLine("1 - Задача 1.");
+            Console.WriteLine("2 - Задача 2.");
+            Console.WriteLine("3 - Задача 3.");
+            Console.WriteLine("4 - Задача 3.");
+            Console.WriteLine("5 - Задача 5.");
+            Console.WriteLine("6 - Задача 6.");
+            Console.WriteLine("===================");
+            int TaskNum = Convert.ToInt32(Console.ReadLine());
+            switch (TaskNum)
+            {
+                case 1:
+                    Console.WriteLine("========================");
+                    Console.WriteLine("Задача 1");
+                    Console.WriteLine("========================");
+                    Task01();
+                    Console.WriteLine("========================");
+                    break;
+
+                 case 2:
+                    Console.WriteLine("========================");
+                    Console.WriteLine("Задача 2");
+                    Console.WriteLine("========================");
+                    Task02();
+                    Console.WriteLine("========================");
+                    break;
+
+                 case 0:
+                    Console.WriteLine("========================");
+                    Console.WriteLine("Звершение работы");
+                    Console.WriteLine("========================");
+                    Console.ReadKey();                    
+                    return;
+
+                case 3:
+                    Console.WriteLine("========================");
+                    Console.WriteLine("Задача 3");
+                    Console.WriteLine("========================");
+                    Task02();
+                    Console.WriteLine("========================");
+                    break;
+
+            }
+                                            
         }                  
     }
 }
