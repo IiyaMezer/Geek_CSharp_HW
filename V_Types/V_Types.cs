@@ -131,7 +131,7 @@ namespace V_Types
             double price3 = 1.53;
             double price4 = 4.50;
             double price5 = 554.50;
-            double price6 = 980.90;
+            
 
             //Скидка
             double discount1 = 0.15;
@@ -249,13 +249,63 @@ namespace V_Types
             }
 
             Console.WriteLine(M_title);
-            if (month == 1 || month == 2 || month==3 || month==12 || month == 11 && MidT>= 0)
+            if ((month == 1 || month == 2 || month==3 || month==12 || month == 11) && MidT> 0)
             {
                 Console.WriteLine("Ожидайте слякоть и скользкие дороги"); //Добваил в это задание еще ноябрь и март, так-как в Томске в эти месяцы уверенный минус
             }
            Console.WriteLine("press any key to shutdouw");
            Console.ReadKey();
           
+        }
+
+
+
+
+        /// <summary>
+        /// Задание 6
+        /// Выполнено частично.
+        /// </summary>
+        static void Task06()
+        {
+            //Маски смен
+            Week shift1 = Week.Tue | Week.Wed | Week.Thu | Week.Fri;
+            Week shift2 = Week.Sat | Week.Sun | Week.Mon ;
+
+            Week day = (Week)0b0011110;
+           // Week day = (Week)0b0000010; при данной записи выводит смену команды 2 хотя смена коменды 1, но из-за нехватки времени я так и не вьехал, как правильно все описать.
+           // При обьявлении масок смен с оператором "или" происхоидт ошибка.
+            
+
+            bool nowshift1 = day == shift1;
+
+
+            if (nowshift1)
+            {
+                Console.WriteLine("Сейчас смена команды1");
+            }
+            else
+            {
+                Console.WriteLine("Сейчас смена команда 2");
+            }
+           Console.WriteLine("Press any key to shutdown");
+           Console.ReadKey();
+
+        }
+
+
+        /// <summary>
+        /// Перечисление дней денели
+        /// </summary>
+        [Flags]
+        public enum Week
+        {
+            Mon = 0b_0000001,
+            Tue = 0b_0000010,
+            Wed = 0b_0000100,
+            Thu = 0b_0001000,
+            Fri = 0b_0010000,
+            Sat = 0b_0100000,
+            Sun = 0b_1000000,
         }
 
        /// <summary>
@@ -272,11 +322,11 @@ namespace V_Types
         static void Main (string[] args)
         {
 
-            Console.WriteLine("Выдберите задачу:");
+            Console.WriteLine("Выберите задачу:");
             Console.WriteLine("1 - Задача 1.");
             Console.WriteLine("2 - Задача 2.");
             Console.WriteLine("3 - Задача 3.");
-            Console.WriteLine("4 - Задача 3.");
+            Console.WriteLine("4 - Задача 4.");
             Console.WriteLine("5 - Задача 5.");
             Console.WriteLine("6 - Задача 6.");
             Console.WriteLine("===================");
@@ -324,9 +374,17 @@ namespace V_Types
                 
                 case 5:
                     Console.WriteLine("========================");
-                    Console.WriteLine("Задача 4");
+                    Console.WriteLine("Задача 5");
                     Console.WriteLine("========================");
                     Task05();
+                    Console.WriteLine("========================");
+                    break;
+                 
+                case 6:
+                    Console.WriteLine("========================");
+                    Console.WriteLine("Задача 6");
+                    Console.WriteLine("========================");
+                    Task06();
                     Console.WriteLine("========================");
                     break;
 
