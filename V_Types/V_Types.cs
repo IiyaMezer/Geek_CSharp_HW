@@ -17,7 +17,7 @@ namespace V_Types
         {
            
 
-             Console.Write("Введите максмальную погоду:");
+            Console.Write("Введите максмальную погоду:");
             decimal maxtemp = decimal.Parse(Console.ReadLine());
 
             Console.Write("Введите минимальную погоду:");
@@ -35,7 +35,7 @@ namespace V_Types
         /// </summary>
         static void Task02()
         {
-             Console.Write("Введите номер месяца:");
+            Console.Write("Введите номер месяца:");
             int month = int.Parse(Console.ReadLine());
             string M_title = "";
             switch (month)
@@ -186,6 +186,77 @@ namespace V_Types
             Console.ReadKey();
          
         }
+        
+
+        
+        /// <summary>
+        /// Задание 5
+        /// Комбинация задания 1 и 2 с добалнением условного оператора
+        /// 
+        /// 
+        /// </summary>
+        static void Task05()
+        {
+            Console.Write("Введите максмальную погоду:");
+            decimal maxtemp = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Введите минимальную погоду:");
+            decimal mintemp = decimal.Parse(Console.ReadLine());
+
+            decimal MidT = MidTempCalc(maxtemp, mintemp);
+            Console.WriteLine($"Средняя темпаратура: {MidT}");
+
+            Console.Write("Введите номер месяца:");
+            int month = int.Parse(Console.ReadLine());
+            string M_title = "";
+            switch (month)
+            {
+                case 1: M_title = "Jan";
+                    break;
+
+                case 2: M_title = "Feb";
+                    break;
+
+                case 3: M_title = "Mar";
+                    break;
+
+                case 4: M_title = "Apr";
+                    break;
+
+                case 5: M_title = "May";
+                    break;
+
+                case 6: M_title = "Jun";
+                    break;
+
+                case 7: M_title = "Jul";
+                    break;
+
+                case 8: M_title = "Aug";
+                    break;
+
+                case 9: M_title = "Sep";
+                    break;
+
+                case 10: M_title = "Oct";
+                    break;
+
+                case 11: M_title = "Nov";
+                    break;
+
+                case 12: M_title = "Dec";
+                    break;       
+            }
+
+            Console.WriteLine(M_title);
+            if (month == 1 || month == 2 || month==3 || month==12 || month == 11 && MidT>= 0)
+            {
+                Console.WriteLine("Ожидайте слякоть и скользкие дороги"); //Добваил в это задание еще ноябрь и март, так-как в Томске в эти месяцы уверенный минус
+            }
+           Console.WriteLine("press any key to shutdouw");
+           Console.ReadKey();
+          
+        }
 
        /// <summary>
        ///Вычисление среднего значения.
@@ -245,9 +316,17 @@ namespace V_Types
 
                 case 4:
                     Console.WriteLine("========================");
-                    Console.WriteLine("Задача 3");
+                    Console.WriteLine("Задача 4");
                     Console.WriteLine("========================");
                     Task04();
+                    Console.WriteLine("========================");
+                    break;
+                
+                case 5:
+                    Console.WriteLine("========================");
+                    Console.WriteLine("Задача 4");
+                    Console.WriteLine("========================");
+                    Task05();
                     Console.WriteLine("========================");
                     break;
 
