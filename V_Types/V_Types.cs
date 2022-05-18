@@ -105,11 +105,86 @@ namespace V_Types
 
         /// <summary>
         /// Задача 4 
-        /// Схематичное изображение чека, где динамические переменныеные(цена, дата, и т.д.) заранее предопредены.
+        /// Схематичное изображение чека.
         /// </summary>
         static void Task04()
         {
+            //Обьявление переменныйх
+            string CompanyName = "ИП Иванов";
+            string address = "г.Барнаул, Ленина 1";
+            int postnum = 777;
+            int Personel = 7458;
+            string operatorname = "Иванов Иван Иванович";
 
+            int checkNum = 7895;
+
+            // Наименование продукка
+            string prodName1 = "Продукт 1";
+            string prodName2 = "Продукт 2";
+            string prodName3 = "Продукт 3";
+            string prodName4 = "Продукт 4";
+            string prodName5 = "Продукт 5";
+
+            //Цена
+            double price1 = 55441.53;
+            double price2 = 7875.66;
+            double price3 = 1.53;
+            double price4 = 4.50;
+            double price5 = 554.50;
+            double price6 = 980.90;
+
+            //Скидка
+            double discount1 = 0.15;
+            double discount2 = 0.0;
+            double discount3 = 0.50;
+            double discount4 = 0.80;
+            double discount5 = 0.10;
+
+            //Цена со скидкой
+            double discPrice1 = price1*(1-discount1);
+            double discPrice2 = price2*(1-discount2);
+            double discPrice3 = price3*(1-discount3);
+            double discPrice4 = price4*(1-discount4);
+            double discPrice5 = price5*(1-discount5);
+
+            //Количество
+            int quant1 = 100;
+            int quant2 = 10;
+            int quant3 = 9;
+            int quant4 = 8;
+            int quant5 = 15;
+
+            //Стоитмость
+            double total1= discPrice1 * quant1;
+            double total2= discPrice2 * quant2;
+            double total3= discPrice3 * quant3;
+            double total4= discPrice4 * quant4;
+            double total5= discPrice5 * quant5;
+
+            //Итоговая смоимость
+            double total = total1 + total2 + total3 + total4 + total5;
+            
+
+
+            // Вывод 
+            Console.WriteLine(CompanyName);
+            Console.WriteLine(address);
+            Console.Write($"Касса N  {postnum}  ");
+            Console.WriteLine($"Кассир N  {Personel},    {operatorname}");
+            Console.WriteLine("------------------------------");
+            Console.WriteLine($"Кассовый чек {checkNum}");
+            Console.WriteLine("------------------------------");
+            Console.WriteLine($"Наименование     Цена    Скидка      Цена со скидкой    Кол-во   Итого");
+            Console.WriteLine("=======================================================================");
+            Console.WriteLine($"{prodName1}  {price1}   {discount1}   {discPrice1}     {quant1}    {total1}");
+            Console.WriteLine($"{prodName2}  {price2}   {discount2}   {discPrice2}     {quant2}    {total2}");
+            Console.WriteLine($"{prodName3}  {price3}   {discount3}   {discPrice3}     {quant3}    {total3}");
+            Console.WriteLine($"{prodName4}  {price4}   {discount4}   {discPrice4}     {quant4}    {total4}");
+            Console.WriteLine($"{prodName5}  {price5}   {discount5}   {discPrice5}     {quant5}    {total5}");
+            Console.WriteLine($"Итоговая цена                                                      {total}");
+            Console.WriteLine($"                          СПАСИБО ЗА ПОКУПКУ                      ");
+            Console.ReadKey();
+         
         }
 
        /// <summary>
