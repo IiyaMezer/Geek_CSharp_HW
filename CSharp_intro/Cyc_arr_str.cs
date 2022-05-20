@@ -111,6 +111,19 @@ namespace Cyc_arr_str
             }
         }
 
+        static void Task03()
+        {
+            Console.WriteLine("Введите текст");
+            string text = Console.ReadLine();
+
+            for(int i = text.Length; i > 0; i--)
+            {
+                Console.Write(text[i-1]);
+            }
+            Console.ReadKey();
+                       
+        }
+
 
         static void Main(string[] args)
         {
@@ -118,10 +131,11 @@ namespace Cyc_arr_str
             while (f)
             {
                 Console.WriteLine("Выберите задачу:");
+                Console.WriteLine("0 - Завершение работы.");
                 Console.WriteLine("1 - Задача 1. Для квадранного массива");
                 Console.WriteLine("2 - Задача 1 С применением алгоритма Брезенхема(гугл помог_) in process.");
                 Console.WriteLine("3 - Задача 2. Телефонный справочник");
-                Console.WriteLine("4 - Задача 4.");
+                Console.WriteLine("4 - Задача 3  Строка наоборот.");
                 Console.WriteLine("===================");
                 int TaskNum = Convert.ToInt32(Console.ReadLine());
                 switch (TaskNum)
@@ -160,13 +174,13 @@ namespace Cyc_arr_str
                         Console.WriteLine("========================");
                         break;
 
-                        //case 4:
-                        //    Console.WriteLine("========================");
-                        //    Console.WriteLine("Задача 4");
-                        //    Console.WriteLine("========================");
-                        //    Task04();
-                        //    Console.WriteLine("========================");
-                        //    break;
+                    case 4:
+                        Console.WriteLine("========================");
+                        Console.WriteLine("Задача 3 Строка наоборот");
+                        Console.WriteLine("========================");
+                        Task03();
+                        Console.WriteLine("========================");
+                        break;
 
                 }
             }
