@@ -8,7 +8,10 @@ namespace Cyc_arr_str
 {
     internal class Cyc_arr_str
     {
-
+        /// <summary>
+        /// Задание 1 диагональ массива
+        /// Основная диагональ матрицы
+        /// </summary>
         static void Task011()
         {
 
@@ -34,6 +37,9 @@ namespace Cyc_arr_str
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Задание 1 с применением алгоритма Брезенхэма
+        /// </summary>
         static void Task01()
         {
 
@@ -73,6 +79,10 @@ namespace Cyc_arr_str
             Console.ReadKey();
         }
 
+
+        /// <summary>
+        /// Задание 2 список контактов
+        /// </summary>
         static void Task02()
         {
 
@@ -111,9 +121,13 @@ namespace Cyc_arr_str
             }
         }
 
+        /// <summary>
+        /// Задание 3 
+        /// Строка наоборот
+        /// </summary>
         static void Task03()
         {
-            Console.WriteLine("Введите текст");
+            Console.Write("Введите текст: ");
             string text = Console.ReadLine();
 
             for(int i = text.Length; i > 0; i--)
