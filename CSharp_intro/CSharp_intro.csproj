@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>Cyc_arr_str.Cyc_arr_str</StartupObject>
   </PropertyGroup>
 
 </Project>

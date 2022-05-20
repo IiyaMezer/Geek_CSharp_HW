@@ -72,71 +72,112 @@ namespace Cyc_arr_str
             }
             Console.ReadKey();
         }
-        static void Main(string[] args)
+
+        static void Task02()
         {
-            bool f = true;
-            while (f)
+
+            string[,] Matrix = new string[5, 2];
+
+            for (int i = 0; i < Matrix.GetLength(0); i++)   // запись контактов
             {
-                Console.WriteLine("Выберите задачу:");
-                Console.WriteLine("1 - Задача 1. Для квадранного массива");
-                Console.WriteLine("2 - Задача 1 С применением алгоритма Брезенхема(гугл помог_) in process.");
-                Console.WriteLine("3 - Задача 3.");
-                Console.WriteLine("4 - Задача 4.");
-                Console.WriteLine("===================");
-                int TaskNum = Convert.ToInt32(Console.ReadLine());
-                switch (TaskNum)
+                for (int j = 0; j < Matrix.GetLength(1); j++)
                 {
-                    case 1:
-                        Console.WriteLine("========================");
-                        Console.WriteLine("Задача 1");
-                        Console.WriteLine("========================");
-                        Task011();
-                        Console.WriteLine("========================");
-                        break;
-
-                    case 2:
-                        Console.WriteLine("========================");
-                        Console.WriteLine("Задача 1");
-                        Console.WriteLine("========================");
-                        Task01();
-                        Console.WriteLine("========================");
-                        break;
-
-                    case 0:
-                        f = false;
-                        Console.WriteLine("========================");
-                        Console.WriteLine("Звершение работы");
-                        Console.WriteLine("========================");
-                        Console.ReadKey();
-                        break;
-                        
-
-
-                        //case 3:
-                        //    Console.WriteLine("========================");
-                        //    Console.WriteLine("Задача 3");
-                        //    Console.WriteLine("========================");
-                        //    Task03();
-                        //    Console.WriteLine("========================");
-                        //    break;
-
-                        //case 4:
-                        //    Console.WriteLine("========================");
-                        //    Console.WriteLine("Задача 4");
-                        //    Console.WriteLine("========================");
-                        //    Task04();
-                        //    Console.WriteLine("========================");
-                        //    break;
+                    if (j == 0)
+                    {
+                        Console.Write("Введите имя контакта: ");
+                        string name = Console.ReadLine();
+                        Matrix[i, j] = $"Name {++i} : {name}";
+                    }
+                    else
+                    {
+                        Console.Write("Введите Email контакта: ");
+                        string mail = Console.ReadLine();
+                        Matrix[i, j] = $"Mail {++i} : {mail}";
+                    }
+                    Console.Write($"{Matrix[i, j]} ");
 
                 }
+                Console.WriteLine();
 
+                for (int i = 0; i < Matrix.GetLength(0); i++) //вывод на экран списка контактов
+                {
+                    for (int j = 0; j < Matrix.GetLength(1); j++)
+                    {
+                        Console.Write($"{Matrix[i, j]} ");
 
-
-
-
-                
+                    }
+                    Console.WriteLine();
+                }
+                Console.ReadKey();
             }
-        }
 
+
+            static void Main(string[] args)
+            {
+                bool f = true;
+                while (f)
+                {
+                    Console.WriteLine("Выберите задачу:");
+                    Console.WriteLine("1 - Задача 1. Для квадранного массива");
+                    Console.WriteLine("2 - Задача 1 С применением алгоритма Брезенхема(гугл помог_) in process.");
+                    Console.WriteLine("3 - Задача 2. Телефонный справочник");
+                    Console.WriteLine("4 - Задача 4.");
+                    Console.WriteLine("===================");
+                    int TaskNum = Convert.ToInt32(Console.ReadLine());
+                    switch (TaskNum)
+                    {
+                        case 1:
+                            Console.WriteLine("========================");
+                            Console.WriteLine("Задача 1 Диагональ");
+                            Console.WriteLine("========================");
+                            Task011();
+                            Console.WriteLine("========================");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("========================");
+                            Console.WriteLine("Задача 1 Диагональ но сложнее");
+                            Console.WriteLine("========================");
+                            Task01();
+                            Console.WriteLine("========================");
+                            break;
+
+                        case 0:
+                            f = false;
+                            Console.WriteLine("========================");
+                            Console.WriteLine("Звершение работы");
+                            Console.WriteLine("========================");
+                            Console.ReadKey();
+                            break;
+
+
+
+                        case 3:
+                            Console.WriteLine("========================");
+                            Console.WriteLine("Задача 2 Справочник");
+                            Console.WriteLine("========================");
+                            Task02();
+                            Console.WriteLine("========================");
+                            break;
+
+                            //case 4:
+                            //    Console.WriteLine("========================");
+                            //    Console.WriteLine("Задача 4");
+                            //    Console.WriteLine("========================");
+                            //    Task04();
+                            //    Console.WriteLine("========================");
+                            //    break;
+
+                    }
+
+
+
+
+
+
+                }
+            }
+
+        }
     }
 }
