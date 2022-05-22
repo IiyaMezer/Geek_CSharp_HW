@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Cyc_arr_str
 {
     internal class Cyc_arr_str
-    {
+    {       
         /// <summary>
         /// Задание 1 диагональ массива
         /// Основная диагональ матрицы
@@ -38,50 +38,50 @@ namespace Cyc_arr_str
         }
 
         /// <summary>
-        /// Задание 1 с применением алгоритма Брезенхэма
+        /// Задание 1 с применением алгоритма Брезенхэма, для "пиксельной" диагонали прямоугольника.
+        /// Под конец написания кода, я задумался о целесообразности использования вдумерного массива.
         /// </summary>
         static void Task01()
         {
 
-            //char[,] Matrix = new char[22, 6];
+            char[,] Matrix = new char[8,30];
+            int dx = Matrix.GetLength(1);
+            int dy = Matrix.GetLength(0);
+            int err = 0;
+            int y = 0;
+            int derr = dy ;
+            int Ystep = (0 < dy) ? 1 : -1; // напралвление диагонали 1 - вправо-вниз, -1 врпаво вверх.
+                                           // Можно было просто присвоить значение 1, в нашем случае.
 
-            //int X0 = 0;
-            //int Y0 = 0;
+            for (int i = 0; i < dx; i++)
+            {
+                Matrix[y, i] = '*';
+                Console.Write($"{Matrix[y, i]} ");
+                err += derr; //накопление ошибки
 
-            //int X1 = Matrix.GetLength(0);
-            //int Y1 = Matrix.GetLength(1);
+                if(err >= dx) // условие перехода на следующую строку
+                {
+                    y+= Ystep;
+                    err -= dx; // сброс ошибки
 
-            //decimal ERR = 0;
-            //decimal dErr = (Y1 + 1) / (X1 + 1);
-            //int y = Y0;
-            //int diry = Y1;
-
-
-
-
-            //for (int i = 0; i < Matrix.GetLength(0); i++)//перебор элементов массива
-            //{
-            //    for (int j = 0; j < Matrix.GetLength(1); j++)
-            //    {
-            //        if (i == j)
-            //        {
-            //            Matrix[i, j] = '*';
-            //        }
-            //        else
-            //        {
-            //            Matrix[i, j] = '-';
-            //        }
-            //        Console.Write($"{Matrix[i, j]} ");
-
-            //    }
-            //    Console.WriteLine();
-            //}
-            Console.ReadKey();
+                    Console.WriteLine();
+                    for (int x = 0; x< (i+1); x++) // переХод на следующую строку с добавлением нужного количества отступов
+                    {
+                        Console.Write("  "); //два пробела по двум причинам: 1) иначе, поледующая строка заезжает на предущую.
+                                             //2) я не нашел способа сделать это более грамотно.
+                    }
+                    
+                }
+                                                
+            }
+            
+                Console.ReadKey();
         }
 
 
         /// <summary>
         /// Задание 2 список контактов
+        /// На что хватило фантазии и времени.
         /// </summary>
         static void Task02()
         {
@@ -147,10 +147,10 @@ namespace Cyc_arr_str
                 Console.WriteLine("Выберите задачу:");
                 Console.WriteLine("0 - Завершение работы.");
                 Console.WriteLine("1 - Задача 1. Для квадранного массива");
-                Console.WriteLine("2 - Задача 1 С применением алгоритма Брезенхема(гугл помог_) in process.");
+                Console.WriteLine("2 - Задача 1 С применением алгоритма Брезенхэма.");
                 Console.WriteLine("3 - Задача 2. Телефонный справочник");
                 Console.WriteLine("4 - Задача 3  Строка наоборот.");
-                Console.WriteLine("===================");
+                Console.WriteLine("==================================================");
                 int TaskNum = Convert.ToInt32(Console.ReadLine());
                 switch (TaskNum)
                 {
