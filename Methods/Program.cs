@@ -20,6 +20,54 @@ namespace Methods
             return firstName + " " + lastName + " " + patronymic;
         }
 
+        /// <summary>
+        /// Метод для вычисления суммы 
+        /// </summary>
+        /// <param name="sum"> изначальное значение суммы ряда </param>
+        /// <param name="array"> входной массив  </param>
+        /// <returns> сумма ряда </returns>
+        static int ArraySum(int[] array )
+        {
+            int sum = 0;
+
+             foreach (int i in array)
+            {
+                sum += array[i-1];                
+            }
+             return sum;
+        }
+        
+        public enum Seasons
+        {
+            Winter,
+            Spring,
+            Summer,
+            Autumn,
+                      
+        }
+
+        static void SeasonPrint(int Month)
+        {
+            
+            switch (Month)
+            {
+                case 1: case 2: case 12:
+                    Console.WriteLine ("Этот месяц из сезона: {0}",Seasons.Winter);
+                    break;
+                case 3: case 4: case 5:
+                    Console.WriteLine ("Этот месяц из сезона: {0}",Seasons.Spring);
+                    break;
+                case 6: case 7: case 8:
+                    Console.WriteLine ("Этот месяц из сезона: {0}",Seasons.Summer);
+                    break;
+                case 9: case 10: case 11:
+                    Console.WriteLine ("Этот месяц из сезона: {0}",Seasons.Autumn);
+                    break;
+                            
+            }
+        }
+
+
         static void Task01()
         {
             string Name1 = "Иван",
@@ -40,27 +88,11 @@ namespace Methods
            
             
         }
-
-        
-        
-
+                            
+                
         /// <summary>
-        /// Метод для вычисления суммы 
+        /// Сумма чисел, введенных через пробел.
         /// </summary>
-        /// <param name="sum"> изначальное значение суммы ряда </param>
-        /// <param name="array"> входной массив  </param>
-        /// <returns> сумма ряда </returns>
-        static int ArraySum(int[] array )
-        {
-            int sum = 0;
-
-             foreach (int i in array)
-            {
-                sum += array[i-1];                
-            }
-             return sum;
-        }
-
         static void Task02()
         {
             //int sum = 0;
@@ -77,6 +109,32 @@ namespace Methods
             Console.ReadKey();
         }
 
+        
+        static void Task03()
+        {
+           bool f = true;
+
+            while (f)
+            {
+                Console.Write("Введите номер месяца: ");
+                int Month = int.Parse(Console.ReadLine());
+                
+                
+                if((Month>=1) & (Month<=12)) //лучшее, что я смог придумать
+                {
+                    
+                    SeasonPrint(Month);
+                    f = false;
+                }
+                else
+                {
+                    Console.WriteLine("Вы ввели некорректый нормер месяца, повторите ввод.");
+                }
+            }
+                        
+
+        }
+
 
         static void Main(string[] args)
         {
@@ -87,7 +145,7 @@ namespace Methods
                 Console.WriteLine("0 - Завершение работы.");
                 Console.WriteLine("1 - Задача 1. GetFullName");
                 Console.WriteLine("2 - Задача 2 Сумма строки.");
-                Console.WriteLine("3 - Задача 2. Телефонный справочник");
+                Console.WriteLine("3 - Задача 3 Время года по месяцу");
                 Console.WriteLine("4 - Задача 3  Строка наоборот.");
                 Console.WriteLine("==================================================");
                 int TaskNum = Convert.ToInt32(Console.ReadLine());
@@ -109,23 +167,23 @@ namespace Methods
                         Console.WriteLine("========================");
                         break;
 
-                    //case 0:
-                    //    f = false;
-                    //    Console.WriteLine("========================");
-                    //    Console.WriteLine("Звершение работы");
-                    //    Console.WriteLine("========================");
-                    //    Console.ReadKey();
-                    //    break;
+                    case 0:
+                        f = false;
+                        Console.WriteLine("========================");
+                        Console.WriteLine("Звершение работы");
+                        Console.WriteLine("========================");
+                        Console.ReadKey();
+                        break;
 
 
 
-                    //case 3:
-                    //    Console.WriteLine("========================");
-                    //    Console.WriteLine("Задача 2 Справочник");
-                    //    Console.WriteLine("========================");
-                    //    Task02();
-                    //    Console.WriteLine("========================");
-                    //    break;
+                    case 3:
+                       Console.WriteLine("========================");
+                       Console.WriteLine("Задача 3 Время года по месяцу");
+                       Console.WriteLine("========================");
+                       Task03();
+                       Console.WriteLine("========================");
+                       break;
 
                     //case 4:
                     //    Console.WriteLine("========================");
