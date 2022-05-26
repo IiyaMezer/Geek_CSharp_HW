@@ -68,6 +68,47 @@ namespace Methods
         }
 
 
+
+        
+        /// <summary>
+        /// Циклический ряд Фибоначчи
+        /// </summary>
+        /// <param name="Num"> Длина ряда </param>
+        /// <returns> сумма ряда </returns>
+        static int FibCyc(int Num)
+        {
+            int sum = 0;
+            int b = 1;
+            for (int i = 0; i < Num; i++)
+            {
+                int t = sum; 
+                sum = b;
+                b = t + b;
+            }
+            return sum;
+        }
+
+        
+       
+
+        /// <summary>
+        /// Рекурсивный Фибоначчи
+        /// </summary>
+        /// <param name="Num"> см.выше </param>
+        /// <returns> см.выше </returns>
+        static int FibRec(int Num)
+        {
+            if (Num < 2)
+                return Num; //Условие выхода из рекурсии
+            else
+            {
+                return FibRec(Num-1)+FibRec(Num-2);
+            }
+            
+
+        }
+
+
         static void Task01()
         {
             string Name1 = "Иван",
@@ -110,6 +151,9 @@ namespace Methods
         }
 
         
+        /// <summary>
+        /// Время года по номеру месяца
+        /// </summary>
         static void Task03()
         {
            bool f = true;
@@ -118,11 +162,9 @@ namespace Methods
             {
                 Console.Write("Введите номер месяца: ");
                 int Month = int.Parse(Console.ReadLine());
-                
-                
-                if((Month>=1) & (Month<=12)) //лучшее, что я смог придумать
+                                
+                if((Month>=1) & (Month<=12)) 
                 {
-                    
                     SeasonPrint(Month);
                     f = false;
                 }
@@ -136,6 +178,53 @@ namespace Methods
         }
 
 
+      
+
+        
+        /// <summary>
+        /// Задача 4
+        /// </summary>
+        static void Task04()
+        {
+            Console.Write("Ведите значения ряда Фибоначчи: ");
+            int FibNum = int.Parse(Console.ReadLine());
+            Console.WriteLine("Выберите вариант решения задачи:");
+            Console.WriteLine("1 - Рекурсивный метод");
+            Console.WriteLine("2 - Обычный");
+            Console.WriteLine("==================================================");
+            int TaskNum = Convert.ToInt32(Console.ReadLine());
+                switch (TaskNum)
+                {
+                    case 1:
+                        Console.WriteLine("========================");
+                        Console.WriteLine("Рекурсивный метод");
+                        Console.WriteLine("========================");
+                        Console.Write($"Ряд Фибоначчи из {FibNum} элементов :");
+                        for(int i = 0; i<= FibNum; i++)// получился цикл в цикле, этого можно было избежать, если бы я писал код вычисления ряда не в отдельном методе. В настоящем методе получается вычисление нескольких рядов Фибоначчи 
+                        {                              // По заданию нужно было вывести лишь результат, но так как это РЯД, то мне захотелось его вывести весь
+                            Console.Write(FibRec(i));
+                        }
+                        
+                        Console.WriteLine("========================");
+                        break;
+
+                    case 2:
+                        Console.WriteLine("========================");
+                        Console.WriteLine("Через циклы");
+                        Console.WriteLine("========================");
+                        Console.Write($"Ряд Фибоначчи из {FibNum} элементов :");
+                        for(int i = 0; i<= FibNum; i++)// получился цикл в цикле, этого можно было избежать, если бы я писал код вычисления ряда не в отдельном методе. В настоящем методе получается вычисление нескольких рядов Фибоначчи 
+                        {                            
+                            Console.Write(FibCyc(i));
+                        }
+                        Console.WriteLine("========================");
+                        break;                                    
+
+                }
+
+
+        }
+
         static void Main(string[] args)
         {
             bool f = true;
@@ -146,7 +235,7 @@ namespace Methods
                 Console.WriteLine("1 - Задача 1. GetFullName");
                 Console.WriteLine("2 - Задача 2 Сумма строки.");
                 Console.WriteLine("3 - Задача 3 Время года по месяцу");
-                Console.WriteLine("4 - Задача 3  Строка наоборот.");
+                Console.WriteLine("4 - Фибоначи.");
                 Console.WriteLine("==================================================");
                 int TaskNum = Convert.ToInt32(Console.ReadLine());
                 switch (TaskNum)
@@ -185,13 +274,13 @@ namespace Methods
                        Console.WriteLine("========================");
                        break;
 
-                    //case 4:
-                    //    Console.WriteLine("========================");
-                    //    Console.WriteLine("Задача 3 Строка наоборот");
-                    //    Console.WriteLine("========================");
-                    //    Task03();
-                    //    Console.WriteLine("========================");
-                    //    break;
+                    case 4:
+                        Console.WriteLine("========================");
+                        Console.WriteLine("Задача 4 Числа Фибоначи");
+                        Console.WriteLine("========================");
+                        Task04();
+                        Console.WriteLine("========================");
+                        break;
 
                 }
             }
