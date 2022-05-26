@@ -41,10 +41,39 @@ namespace Methods
             
         }
 
+        
+        
+
+        /// <summary>
+        /// Метод для вычисления суммы 
+        /// </summary>
+        /// <param name="sum"> изначальное значение суммы ряда </param>
+        /// <param name="array"> входной массив  </param>
+        /// <returns> сумма ряда </returns>
+        static int ArraySum(int[] array )
+        {
+            int sum = 0;
+
+             foreach (int i in array)
+            {
+                sum += array[i-1];                
+            }
+             return sum;
+        }
+
         static void Task02()
         {
-            Console.Write("Ввеедите числа для вычисления их суммы через пробел:");
-            //Console.WriteLine(Console.ReadLine().Split( ).Select(int.Parse).Sum());
+            //int sum = 0;
+            Console.Write("Ввеедите числа через пробел для вычисления их суммы :");
+            string preSplit = Console.ReadLine();
+            int [] splitted = preSplit.Split().Select(int.Parse).ToArray();  //Select и ToArray вычитал из оф документации на сайте Microsoft.
+            //foreach (int i in splitted)
+            //{
+            //     sum += splitted[i-1];                
+            // }
+            // закомментил после добавления метода с аналогичной задачей.
+
+            Console.WriteLine("Сумма ряда: {0}", ArraySum(splitted));
             Console.ReadKey();
         }
 
@@ -66,7 +95,7 @@ namespace Methods
                 {
                     case 1:
                         Console.WriteLine("========================");
-                        Console.WriteLine("Задача 1 Диагональ");
+                        Console.WriteLine("Задача 1 GetFullName");
                         Console.WriteLine("========================");
                         Task01();
                         Console.WriteLine("========================");
