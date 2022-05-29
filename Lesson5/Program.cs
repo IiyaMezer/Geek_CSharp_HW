@@ -48,7 +48,8 @@ namespace Lesson5
         {
             Console.Write("Ввеедите числа (0...255) через пробел для вычисления их суммы :");
             string preSplit = Console.ReadLine(); // запрос на ввод набора чисел
-            string [] splitted = preSplit.Split().ToArray(); // создание масива строк
+            byte [] bytearr = preSplit.Split().Select(byte.Parse).ToArray(); // создание ,массива байтов
+            File.WriteAllBytes(@"byte.bin", bytearr);
 
              
             Console.ReadKey(true);
@@ -95,13 +96,13 @@ namespace Lesson5
 
 
 
-                        //case 3:
-                        //    Console.WriteLine("========================");
-                        //    Console.WriteLine("Задача 2 Справочник");
-                        //    Console.WriteLine("========================");
-                        //    Task02();
-                        //    Console.WriteLine("========================");
-                        //    break;
+                    case 3:
+                        Console.WriteLine("========================");
+                        Console.WriteLine("Задача 3 Байтовый файл");
+                        Console.WriteLine("========================");
+                        Task03();
+                        Console.WriteLine("========================");
+                        break;
 
                         //case 4:
                         //    Console.WriteLine("========================");
