@@ -9,9 +9,53 @@ namespace Lesson5
 {
     internal class Program
     {
+       
         /// <summary>
-        /// Залание 1
+        /// Добавл код для отображения файлов внутри папки.
+        /// 
         /// </summary>
+        /// <param name="dir"></param>
+        /// <param name="indent"></param>
+        /// <param name="lastDirectory"></param>
+        static void PrintDir(DirectoryInfo dir, string indent, bool lastDirectory)
+        {
+            Console.Write(indent);
+            Console.Write(lastDirectory ? "└─" : "├─");
+            indent += lastDirectory ? " " : "│ ";
+            Console.WriteLine(dir.Name);
+
+            
+            FileInfo[] subFiles = dir.GetFiles();
+           
+            
+            bool lastfile = false;
+
+            // добавленный код для отобрадения файлов.
+                       
+            for (int j = 0; j < subFiles.Length; j++)
+            {
+                lastfile = (j == subFiles.Length - 1);
+
+                Console.Write(indent);
+                Console.Write(lastfile ? "└─" : "├─");
+                Console.WriteLine(subFiles[j].Name);                
+
+            }
+
+            DirectoryInfo[] subDirs = dir.GetDirectories();
+            for (int i = 0; i < subDirs.Length; i++)
+            {
+                PrintDir(subDirs[i], indent, i == subDirs.Length - 1);
+
+                
+            }
+
+            
+        }
+
+            /// <summary>
+            /// Задание 1
+            /// </summary>
         static void Task01()
         {
             Console.WriteLine("Введите произвольный текст: ");
@@ -54,6 +98,35 @@ namespace Lesson5
              
             Console.ReadKey(true);
         }
+        
+        
+        /// <summary>
+        /// Задина 4 неполностью. Ввиду нехватки времени, я смог разобраться только с рекурсивным способом,который был показан на лекции, но 
+        /// думаю, что код для отображения файлов можно считать за реализацию способа через циклы, так как с папками он будет аналогичен.
+        /// Также я не успел реализовать вывод дерева в файл.
+        /// </summary>
+        static void Task04()
+        {
+                
+
+                DirectoryInfo directoryInfo = new DirectoryInfo(@"C:\Users\carna\Desktop\ЧПУ");
+
+                Console.WriteLine("FullName: {0}", directoryInfo.FullName);
+                Console.WriteLine("Name: {0}", directoryInfo.Name);
+                Console.WriteLine("Parent: {0}", directoryInfo.Parent);
+                Console.WriteLine("Creation: {0}", directoryInfo.CreationTime);
+                Console.WriteLine("Attributes: {0}", directoryInfo.Attributes.ToString());
+                Console.WriteLine("Root: {0}", directoryInfo.Root);
+
+                Console.WriteLine();
+
+                PrintDir(new DirectoryInfo(@"C:\Users\carna\Desktop\ЧПУ"), "", true);
+
+
+
+                Console.ReadKey(true);
+
+        }
 
         static void Main(string[] args)
         {
@@ -65,7 +138,7 @@ namespace Lesson5
                 Console.WriteLine("1 - Задача 1. Запись содержимого троки в файл");
                 Console.WriteLine("2 - Задача 2. Запись времени в файл startup.txt.");
                 Console.WriteLine("3 - Задача 3. Сохранение числа в бинарный файл");
-                Console.WriteLine("4 - Задача 3.  Строка наоборот.");
+                Console.WriteLine("4 - Задача 4. Дерево.");
                 Console.WriteLine("==================================================");
                 int TaskNum = Convert.ToInt32(Console.ReadLine());
                 switch (TaskNum)
@@ -104,13 +177,15 @@ namespace Lesson5
                         Console.WriteLine("========================");
                         break;
 
-                        //case 4:
-                        //    Console.WriteLine("========================");
-                        //    Console.WriteLine("Задача 3 Строка наоборот");
-                        //    Console.WriteLine("========================");
-                        //    Task03();
-                        //    Console.WriteLine("========================");
-                        //    break;
+                    case 4:
+                        Console.WriteLine("========================");
+                        Console.WriteLine("Задача 4 Дерево");
+                        Console.WriteLine("========================");
+                        Task04();
+                        Console.WriteLine("========================");
+                        break;
+
+
 
                 }
             }
