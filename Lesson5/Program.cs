@@ -32,15 +32,15 @@ namespace Lesson5
 
             // добавленный код для отобрадения файлов.
                        
-            for (int j = 0; j < subFiles.Length; j++)
-            {
-                lastfile = (j == subFiles.Length - 1);
+            //for (int j = 0; j < subFiles.Length; j++)
+            //{
+            //    lastfile = (j == subFiles.Length - 1);
 
-                Console.Write(indent);
-                Console.Write(lastfile ? "└─" : "├─");
-                Console.WriteLine(subFiles[j].Name);                
+            //    Console.Write(indent);
+            //    Console.Write(lastfile ? "└─" : "├─");
+            //    Console.WriteLine(subFiles[j].Name);                
 
-            }
+            //}
 
             DirectoryInfo[] subDirs = dir.GetDirectories();
             for (int i = 0; i < subDirs.Length; i++)
@@ -49,8 +49,18 @@ namespace Lesson5
 
                 
             }
+            for(int j = 0; j < subFiles.Length; j++)
+            {
+                lastfile = (j == subFiles.Length - 1);
 
-            
+                Console.Write(indent);
+                Console.Write(lastfile ? "└─" : "├─");
+                indent += lastfile ? " " : "│ ";
+                Console.WriteLine(subFiles[j].Name);
+
+            }
+
+
         }
 
             /// <summary>
