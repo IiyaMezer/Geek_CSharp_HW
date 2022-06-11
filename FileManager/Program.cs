@@ -83,6 +83,7 @@ namespace FileManager
                     }
                     else
                     {
+                        command.Clear();
                         Console.SetCursorPosition(left, top);
                     }
 
