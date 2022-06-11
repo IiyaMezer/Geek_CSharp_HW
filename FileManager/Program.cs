@@ -71,6 +71,24 @@ namespace FileManager
                     Console.SetCursorPosition(currentLeft - 1, top);
                 }
 
+                if(keyInfo.Key == ConsoleKey.Backspace)
+                {
+                    if (command.Length > 0)
+                        command.Remove(command.Length - 1, 1);
+                    if(currentLeft >= left)
+                    {
+                        Console.SetCursorPosition(currentLeft, top);
+                        Console.Write(" ");
+                        Console.SetCursorPosition(currentLeft, top);
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(left, top);
+                    }
+
+
+                }
+
 
             }
             while (keyInfo.Key != ConsoleKey.Enter);
