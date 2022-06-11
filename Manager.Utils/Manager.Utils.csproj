@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01ACE83B-44BA-4114-93F1-A889E6471594}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>FileManager</RootNamespace>
-    <AssemblyName>FileManager</AssemblyName>
+    <ProjectGuid>{2AEDE6E7-DA06-4E4A-AC6F-0F6CCCEBD430}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Manager.Utils</RootNamespace>
+    <AssemblyName>Manager.Utils</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,17 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="API.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Manager.Utils\Manager.Utils.csproj">
-      <Project>{2aede6e7-da06-4e4a-ac6f-0f6cccebd430}</Project>
-      <Name>Manager.Utils</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

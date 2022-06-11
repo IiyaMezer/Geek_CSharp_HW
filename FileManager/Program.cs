@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Manager.Utils;
 
 namespace FileManager
 {
@@ -31,6 +32,14 @@ namespace FileManager
             Console.ReadLine();
             
         }
+        /// <summary>
+        /// Get Current cursor position
+        /// </summary>
+        /// <returns></returns>
+        static (int left, int top) GetCursorPos()
+        {
+            return (Console.CursorLeft, Console.CursorTop);
+        }
 
 
         /// <summary>
@@ -39,9 +48,54 @@ namespace FileManager
         /// <param name="width"> Длина строки ввода </param>
         static void ProcEnterComm(int width)
         {
+            (int left, int top) = GetCursorPos();
+            StringBuilder command = new StringBuilder();
+            ConsoleKeyInfo keyInfo;
+            char key;
 
+            do
+            {
+                keyInfo = Console.ReadKey();
+                key = keyInfo.KeyChar;
+
+                if (keyInfo.Key != ConsoleKey.Enter && keyInfo.Key != ConsoleKey.Backspace &&
+                    keyInfo.Key != ConsoleKey.UpArrow)
+                    command.Append(key);
+
+                (int currentLeft, int currentTop) = GetCursorPos();
+
+                if(currentLeft == width - 2)
+                {
+                    Console.SetCursorPosition(currentLeft - 1, top);
+                    Console.Write(" ");
+                    Console.SetCursorPosition(currentLeft - 1, top);
+                }
+
+
+            }
+            while (keyInfo.Key != ConsoleKey.Enter);
+
+            ParseCommandString(command.ToString());
+            
+            
+        }
+
+
+
+        static void ParseCommandString(string command)
+        {
 
         }
+
+        static string ShortPath(string path)
+        {
+            StringBuilder shortPath = new StringBuilder((int)API.MAX_PATH);
+
+            API.GetShortPathName(path, shortPath, API.MAX_PATH);
+            return shortPath.ToString();
+        }
+
+        
 
 
         /// <summary>
@@ -49,7 +103,7 @@ namespace FileManager
         /// </summary>
         static void UpdateConsole()
         {
-            DrawConsole(currDir, 0, 26, WINDOW_WIDTH, 3);
+            DrawConsole(ShortPath(currDir), 0, 26, WINDOW_WIDTH, 3);
             ProcEnterComm(WINDOW_WIDTH);
 
         }
