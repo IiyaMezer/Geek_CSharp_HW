@@ -93,7 +93,6 @@ namespace FileManager
 
             }
             while (keyInfo.Key != ConsoleKey.Enter);
-
             ParseCommandString(command.ToString());
             
             
@@ -233,7 +232,7 @@ namespace FileManager
             int pagelines = 16;
 
             string[] lines = tree.ToString().Split('\n');
-            int pageTotal = (lines.Length + pagelines-1 ) / 2;
+            int pageTotal = (lines.Length + pagelines - 1 ) / pagelines;
             if (page > pageTotal)
                 page = pageTotal;
 
@@ -268,7 +267,7 @@ namespace FileManager
             if (lastdir)
             {
                 tree.Append("└─");
-                indent += "│ ";
+                indent += "  ";
             }
             else
             {
