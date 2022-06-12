@@ -103,6 +103,33 @@ namespace FileManager
 
         static void ParseCommandString(string command)
         {
+            string[] commandParams = command.ToLower().Split(' ');
+            if(commandParams.Length > 0)
+            {
+                switch (commandParams[0])
+                {
+                    case "cd":
+                        if(commandParams.Length > 1)
+                            if(Directory.Exists(commandParams[1]))
+                            {
+                                currDir = commandParams[1];
+                            }
+                        break;
+                    case "ls":
+                        if(commandParams.Length > 1 && Directory.Exists(commandParams[1]))
+                            if (commandParams.Length > 3 && commandParams[2] == "-p" && int.TryParse(commandParams[3], out int n))
+                            {
+                                TreeDraw(new DirectoryInfo(commandParams[1]), n);
+                            }
+                            else
+                            {
+                                TreeDraw(new DirectoryInfo(commandParams[1]), 1);
+                            }
+                        break;
+                }
+            }
+
+            UpdateConsole();
 
         }
 
@@ -189,6 +216,84 @@ namespace FileManager
             Console.Write("╝");
             Console.SetCursorPosition(x, y);
 
+        }
+
+        /// <summary>
+        /// отрисовка дерева
+        /// </summary>
+        /// <param name="dir">directory</param>
+        /// <param name="page">pagenum</param>
+        
+        static void TreeDraw(DirectoryInfo dir, int page )
+        {
+            StringBuilder tree = new StringBuilder();
+            Tree(tree, dir, "", true);
+            DrawWindow(0, 0, WINDOW_WIDTH, 18);
+            (int currentLeft, int currentTop) = GetCursorPos();
+            int pagelines = 16;
+
+            string[] lines = tree.ToString().Split('\n');
+            int pageTotal = (lines.Length + pagelines-1 ) / 2;
+            if (page > pageTotal)
+                page = pageTotal;
+
+            for(int i = (page -1)*pagelines, count = 0; i < page*pagelines; i++, count++)
+            {
+                if(lines.Length - 1 > i)
+                {
+                    Console.SetCursorPosition(currentLeft + 1, currentTop + 1 + count);
+                    Console.WriteLine(lines[i]);
+                }
+            }
+
+            // Page num
+            string footer = $"╡{page} of {pageTotal}╞";
+            Console.SetCursorPosition(WINDOW_WIDTH / 2 - footer.Length / 2, 17);
+            Console.WriteLine(footer);
+
+
+        }
+
+
+        /// <summary>
+        /// Создание дерева
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="dir"></param>
+        /// <param name="indent"></param>
+        /// <param name="lastdir"></param>
+        static void Tree(StringBuilder tree, DirectoryInfo dir, string indent, bool lastdir)
+        {
+            tree.Append(indent);
+            if (lastdir)
+            {
+                tree.Append("└─");
+                indent += "│ ";
+            }
+            else
+            {
+                tree.Append("├─");
+                indent += "│ ";
+            }
+
+            tree.Append($"{dir.Name}\n");
+
+            FileInfo[] subfiles = dir.GetFiles();
+            for(int i = 0; i < subfiles.Length; i++)
+            {
+                if (i == subfiles.Length - 1)
+                {
+                    tree.Append($"{indent}└─{subfiles[i].Name}\n");
+                }
+                else
+                {
+                    tree.Append($"{indent}├─{subfiles[i].Name}\n");
+                }
+            }
+
+            DirectoryInfo[] subDirects = dir.GetDirectories();
+            for (int i = 0; i < subDirects.Length; i++)
+                Tree(tree, subDirects[i], indent, i == subDirects.Length - 1);
         }
     }
 }
