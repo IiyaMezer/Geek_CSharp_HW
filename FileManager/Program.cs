@@ -140,6 +140,11 @@ namespace FileManager
             return shortPath.ToString();
         }
 
+        static void Info(DirectoryInfo dir)
+        {
+            string dir = 
+        }
+
         
 
 
