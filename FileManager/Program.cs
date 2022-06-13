@@ -112,17 +112,21 @@ namespace FileManager
                             if(Directory.Exists(commandParams[1]))
                             {
                                 currDir = commandParams[1];
+                                Info(currDir);
                             }
                         break;
+
                     case "ls":
                         if(commandParams.Length > 1 && Directory.Exists(commandParams[1]))
                             if (commandParams.Length > 3 && commandParams[2] == "-p" && int.TryParse(commandParams[3], out int n))
                             {
                                 TreeDraw(new DirectoryInfo(commandParams[1]), n);
+                                Info(currDir);
                             }
                             else
                             {
                                 TreeDraw(new DirectoryInfo(commandParams[1]), 1);
+                                Info(currDir);
                             }
                         break;
                 }
@@ -140,10 +144,63 @@ namespace FileManager
             return shortPath.ToString();
         }
 
-        static void Info(DirectoryInfo dir)
+
+        /// <summary>
+        /// Информация о папке
+        /// </summary>
+        /// <param name="dir">аддес папки</param>
+        static void Info(string dir)
         {
-            string dir = 
+            DirectoryInfo dirS = new DirectoryInfo(dir);
+
+            Console.SetCursorPosition(2, 19);
+
+            Console.WriteLine($"Название каталога: {dirS.Name}");
+            Console.SetCursorPosition(2, 20);
+            Console.WriteLine($"Полное название каталога: {dirS.FullName}");
+            Console.SetCursorPosition(2, 21);
+            Console.WriteLine($"Время создания каталога: {dirS.CreationTime}");
+            Console.SetCursorPosition(2, 22);
+            // Console.WriteLine("Размер каталога:{0}", DirSize(dirS,true).ToString() );
+
         }
+
+
+        /// <summary>
+        /// Метод для подсчета информации о действующей директории
+        /// 
+        /// 
+        /// ПЕРЕПОЛНЯЕТСЯ СТЭК, решения не придумал.
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <returns></returns>
+        static long DirSize(DirectoryInfo dir, bool subdir)
+        {
+            
+            //float size = 0f;
+            //FileInfo[] subfiles = dir.GetFiles();
+            //foreach (FileInfo file in subfiles)
+            //
+            //    size += file.Length;
+            //}
+
+            //DirectoryInfo[] subdir = dir.GetDirectories();
+            //foreach(DirectoryInfo dirs in subdir)
+            //{
+            //    size+= DirSize(dir);
+            //}
+
+
+            long size = dir.EnumerateFiles().Sum(file => file.Length);
+
+            if (subdir)
+            {
+                size += dir.EnumerateDirectories().Sum(dirs => DirSize(dir, true));
+            }
+
+            return size;
+        }
+    
 
         
 
