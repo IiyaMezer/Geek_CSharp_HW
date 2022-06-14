@@ -161,7 +161,7 @@ namespace FileManager
             Console.SetCursorPosition(2, 21);
             Console.WriteLine($"Время создания каталога: {dirS.CreationTime}");
             Console.SetCursorPosition(2, 22);
-            // Console.WriteLine("Размер каталога:{0}", DirSize(dirS,true).ToString() );
+            //Console.WriteLine("Размер каталога:{0}", DirSize(dirS,true).ToString() );
 
         }
 
@@ -178,11 +178,11 @@ namespace FileManager
         {
             
             //float size = 0f;
-            //FileInfo[] subfiles = dir.GetFiles();
-            //foreach (FileInfo file in subfiles)
-            //
-            //    size += file.Length;
-            //}
+            //fileinfo[] subfiles = dir.getfiles();
+            //foreach (fileinfo file in subfiles)
+           // }
+           //     size += file.length;
+          //  }
 
             //DirectoryInfo[] subdir = dir.GetDirectories();
             //foreach(DirectoryInfo dirs in subdir)
