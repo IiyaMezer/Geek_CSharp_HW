@@ -4,6 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leeson8", "Leeson8\Leeson8.csproj", "{B62865DA-9F9B-4258-A88D-F6093362AA6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +20,14 @@ Global
 		{56205ECB-1E47-4752-8153-44C0F842015F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56205ECB-1E47-4752-8153-44C0F842015F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56205ECB-1E47-4752-8153-44C0F842015F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37BFECE6-8015-4D41-B3AA-EA421445F717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37BFECE6-8015-4D41-B3AA-EA421445F717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37BFECE6-8015-4D41-B3AA-EA421445F717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37BFECE6-8015-4D41-B3AA-EA421445F717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B62865DA-9F9B-4258-A88D-F6093362AA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B62865DA-9F9B-4258-A88D-F6093362AA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B62865DA-9F9B-4258-A88D-F6093362AA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B62865DA-9F9B-4258-A88D-F6093362AA6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
