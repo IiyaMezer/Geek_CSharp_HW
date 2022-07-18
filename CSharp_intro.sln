@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp_intro", "CSharp_intro\CSharp_intro.csproj", "{56205ECB-1E47-4752-8153-44C0F842015F}"
-EndProject
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,6 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C82C70A-D5B0-47DD-B7B2-CFEAED65BF49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C82C70A-D5B0-47DD-B7B2-CFEAED65BF49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C82C70A-D5B0-47DD-B7B2-CFEAED65BF49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C82C70A-D5B0-47DD-B7B2-CFEAED65BF49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56205ECB-1E47-4752-8153-44C0F842015F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56205ECB-1E47-4752-8153-44C0F842015F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56205ECB-1E47-4752-8153-44C0F842015F}.Release|Any CPU.ActiveCfg = Release|Any CPU
